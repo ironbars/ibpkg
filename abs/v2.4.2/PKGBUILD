@@ -14,7 +14,7 @@ sha256sums=("bf950de75a14041cfb873a925ab4187ce0bae46a91d0982fa8563e40aa2e233d")
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -r -i '/^build_simple/ {n; s/(-[[:lower:]]+)/-trimpath \1/g}' Makefile
+  sed -r -i '/^build_simple/ {n; s/(-[[:lower:]]+)/-trimpath \1/}' Makefile
 }
 
 build() {

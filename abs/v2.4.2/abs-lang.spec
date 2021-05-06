@@ -23,7 +23,7 @@ Ruby, to the convenience of Bash.
 
 %prep
 %setup -q -n %{shortname}-%{version}
-sed -r -i '/^build_simple/ {n; s/(-[[:lower:]]+)/-trimfile \1/g}' Makefile
+sed -r -i '/^build_simple/ {n; s/(-[[:lower:]]+)/-trimfile \1/}' Makefile
 
 
 %build
