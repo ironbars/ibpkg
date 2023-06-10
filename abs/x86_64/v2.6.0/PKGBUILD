@@ -1,0 +1,28 @@
+# Maintainer: Marc Patton <pattonmj8503@gmail.com>
+
+pkgname="abs"
+pkgver=2.6.0
+pkgrel=1
+arch=("x86_64")
+pkgdesc="The ABS Programming Language"
+url="https://www.abs-lang.org"
+license=("MIT")
+provides=("abs")
+makedepends=("go")
+source=("https://github.com/abs-lang/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=("b057a62d48ddfa14c29d735e57cb1b2a65b14cca3d2a5a2408569eb3e2f039a8")
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  make build_simple
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -D -m 755 builds/"${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+}
+
